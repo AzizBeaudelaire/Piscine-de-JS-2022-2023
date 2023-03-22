@@ -1,5 +1,4 @@
 let person = {
-    name: "Hugo-M Taj",
     age: 25,
     country: "CA",
 };
@@ -15,4 +14,3 @@ console.log("person:", person);
 console.log("clone1:", clone1);
 console.log("clone2:", clone2);
 console.log("samePerson:", samePerson);
-  
