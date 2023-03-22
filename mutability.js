@@ -1,4 +1,5 @@
 let person = {
+    name: "Hugo-M Taj",
     age: 25,
     country: "CA",
 };
@@ -10,7 +11,8 @@ let samePerson = person;
 person.age += 1;
 person.country = "FR";
 
-console.log("person:", person);
-console.log("clone1:", clone1);
-console.log("clone2:", clone2);
-console.log("samePerson:", samePerson);
+console.log("person:", person); // { name: 'Hugo-M Taj', age: 26, country: 'FR' }
+console.log("clone1:", clone1); // { name: 'Hugo-M Taj', age: 25, country: 'CA' }
+console.log("clone2:", clone2); // { name: 'Hugo-M Taj', age: 25, country: 'CA' }
+console.log("samePerson:", samePerson); // { name: 'Hugo-M Taj', age: 26, country: 'FR' }
+  
