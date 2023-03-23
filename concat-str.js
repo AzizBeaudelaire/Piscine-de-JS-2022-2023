@@ -1,5 +1,3 @@
-function concatStr() {
-    const start = 'Hello';
-    const end = 'World';
-    return start + end;
+function concatStr(str1, str2) {
+    return str1 + str2;
 }
