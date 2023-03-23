@@ -1,3 +1,1 @@
-function concatStr(str1, str2) {
-    return str1 + str2;
-}
+const concatStr = (str1, str2) => str1 + str2;
