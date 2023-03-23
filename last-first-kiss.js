@@ -7,5 +7,8 @@ function last(input) {
 }
 
 function kiss(input) {
-    return input[input.length - 1, 0]
-}
+    const first = input[0];
+    const last = input[input.length - 1];
+    return [last, first];
+  }
+  
