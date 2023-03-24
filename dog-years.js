@@ -17,3 +17,6 @@ function dogYears(planet, age_seconds) {
     return age_dog_years.toFixed(2);
 }
   
+const age_on_earth = 1000000000;
+const age_on_planet = dogYears('earth', age_on_earth);
+console.log(age_on_planet); // Output: 221.82
