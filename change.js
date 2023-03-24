@@ -1,4 +1,4 @@
-const sourceObject = (2);
+const sourceObject = {};
 
 function get(key) {
     return sourceObject[key];
