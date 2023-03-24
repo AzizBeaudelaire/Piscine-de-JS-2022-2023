@@ -14,9 +14,5 @@ function dogYears(planet, age) {
     const orbital_period = orbital_periods[planet];
     const age_earth_years = age / earth_year;
     const age_dog_years = age_earth_years / orbital_period / dog_year;
-    return age_dog_years.toFixed(2);
+    return parseFloat(age_dog_years.toFixed(2));
 }
-  
-const age_on_earth = 1000000000;
-const age_on_planet = dogYears('earth', age_on_earth);
-console.log(age_on_planet); // Output: 221.82
