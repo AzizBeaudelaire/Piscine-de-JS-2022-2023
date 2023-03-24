@@ -1,10 +1,10 @@
 function dogYears(planet, age) {
-    const earthYears = age * 7;
+    const earthYears = age / 31557600;
     let dogYears = 0;
     
     switch(planet) {
         case 'earth':
-          dogYears = earthYears;
+          dogYears = earthYears / 7;
           break;
         case 'mercury':
           dogYears = earthYears / 0.2408467;
@@ -30,5 +30,6 @@ function dogYears(planet, age) {
         default:
           return 'Invalid planet name.';
     }  
+    dogYears /= 7; // Convert human years to dog years
     return (dogYears*100) / 100;
 }
