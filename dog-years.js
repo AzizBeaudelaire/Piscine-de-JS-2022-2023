@@ -1,4 +1,4 @@
-function dogYears(planet, age_seconds) {
+function dogYears(planet, age) {
     const earth_year = 365.25 * 24 * 60 * 60; // seconds in an Earth year
     const dog_year = earth_year / 7; // seconds in a dog year
     const orbital_periods = {
@@ -12,7 +12,7 @@ function dogYears(planet, age_seconds) {
       neptune: 164.79132
     };
     const orbital_period = orbital_periods[planet];
-    const age_earth_years = age_seconds / earth_year;
+    const age_earth_years = age_/ earth_year;
     const age_dog_years = age_earth_years / orbital_period / dog_year;
     return age_dog_years.toFixed(2);
 }
