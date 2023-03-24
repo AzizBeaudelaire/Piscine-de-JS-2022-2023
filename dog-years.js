@@ -13,6 +13,7 @@ function dogYears(planet, age) {
     };
     const orbital_period = orbital_periods[planet];
     const age_earth_years = age / earth_year;
-    const age_dog_years = age_earth_years / orbital_period / dog_year;
-    return parseFloat(age_dog_years.toFixed(2));
+    const age_dog_years = age_earth_years / orbital_period * 7;
+    return age_dog_years;
 }
+  
