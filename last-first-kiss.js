@@ -10,5 +10,4 @@ function kiss(input) {
     const first = input[0];
     const last = input[input.length - 1];
     return [last, first];
-  }
-  
+}
