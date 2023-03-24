@@ -1,8 +1,4 @@
-const sourceObject = {
-    name: 'John',
-    age: 30,
-    city: 'New York'
-};
+const sourceObject = (2);
 
 function get(key) {
     return sourceObject[key];
