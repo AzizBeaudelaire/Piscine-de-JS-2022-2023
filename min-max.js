@@ -16,13 +16,13 @@ function min() {
 
 function max() {
     if (arguments.length === 0) {
-      return Infinity;
+      return -Infinity;
     }
   
     let max = arguments[0];
   
     for (let i = 1; i < arguments.length; i++) {
-      if (arguments[i] < max) {
+      if (arguments[i] > max) {
         max = arguments[i];
       }
     }
