@@ -1,6 +1,17 @@
 function sameAmount(str, regex1, regex2) {
-    const matches1 = str.match(regex1) || [];
-    const matches2 = str.match(regex2) || [];
-    return matches1.length === matches2.length;
+    let count1 = 0;
+    let count2 = 0;
+    let match1;
+    let match2;
+  
+    while ((match1 = regex1.exec(str)) !== null) {
+        count1++;
+    }
+  
+    while ((match2 = regex2.exec(str)) !== null) {
+        count2++;
+    }
+  
+    return count1 === count2;
 }
   
