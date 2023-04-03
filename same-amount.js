@@ -2,15 +2,17 @@ function sameAmount(str, regExp1, regExp2) {
     let firstCount = 0;
     let secondCount = 0;
   
-    while (regExp1.test(str)) {
-        firstCount++;
-        str = str.replace(regExp1, '');
+    for (let i = 0; i < str.length; i++) {
+        if (str.slice(i).match(regExp1)) {
+            firstCount++;
+            i += str.slice(i).search(regExp1) + regExp1.source.length - 1;
+        }
+      if (str.slice(i).match(regExp2)) {
+            secondCount++;
+            i += str.slice(i).search(regExp2) + regExp2.source.length - 1;
+        }
     }
   
-    while (regExp2.test(str)) {
-         secondCount++;
-        str = str.replace(regExp2, '');
-    }
-  
-    return firstCount === secondCount && str === '';
+    return firstCount === secondCount;
 }
+  
