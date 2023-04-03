@@ -1,12 +1,13 @@
 function vowelDots(s) {
-    const vowels = /[aeiou]/gi;
-    let result = "";
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    let result = '';
     for (let i = 0; i < s.length; i++) {
-        if (vowels(s[i])) {
-            result += s[i] + ".";
+        if (vowels.indexOf(s[i].toLowerCase()) !== -1) {
+            result += s[i] + '.';
         } else {
             result += s[i];
         }
     }
     return result;
-}
+  }
+  
