@@ -10,3 +10,5 @@ function vowelDots(s) {
     }
     return result;
 }
+
+module.exports = vowelDots;
