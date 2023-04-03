@@ -1,24 +1,16 @@
-function sameAmount(str, regex1, regex2) {
-    let count1 = 0;
-    let count2 = 0;
+function sameAmount(str, regExp1, regExp2) {
+    let firstCount = 0;
+    let secondCount = 0;
   
-    while (true) {
-        let match1 = regex1.exec(str);
-        let match2 = regex2.exec(str);
-  
-        if (!match1 && !match2) {
-            return count1 === count2;
-        }
-  
-        if (match1) {
-            count1++;
-        }
-  
-        if (match2) {
-            count2++;
-        }
+    while (regExp1.test(str)) {
+        firstCount++;
+        str = str.replace(regExp1, '');
     }
+  
+    while (regExp2.test(str)) {
+         secondCount++;
+        str = str.replace(regExp2, '');
+    }
+  
+    return firstCount === secondCount && str === '';
 }
-  
-  
-  
