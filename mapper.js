@@ -1,9 +1,9 @@
-function map(arr, func) {
-    const result = [];
-    for (let i = 0; i < arr.length; i++) {
-        result.push(func(arr[i]));
+function posValsIndex(arr, index) {
+    if (arr[index] > 0) {
+        return `undefined: ${arr[index]}`;
+    } else {
+        return undefined;
     }
-    return result;
 }
   
 function flatMap(arr, func) {
