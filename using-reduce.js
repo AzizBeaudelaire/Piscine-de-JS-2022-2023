@@ -1,6 +1,7 @@
-function adder(arr) {
-    return arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+function adder(arr, initialValue = 0) {
+    return arr.reduce((acc, val) => acc + val, initialValue);
 }
+
 
 function sumOrMul(arr, init) {
     return arr.reduce((accumulator, currentValue) => {
