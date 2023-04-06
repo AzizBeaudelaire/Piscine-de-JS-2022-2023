@@ -1,21 +1,22 @@
 function map(arr, func) {
-    return arr.reduce((result, item) => {
-        result.push(func(item));
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+        result.push(func(arr[i], i, arr));
+    }
         return result;
-    }, []);
 }
   
 function flatMap(arr, func) {
-    return arr.reduce((result, item) => {
-        const mapped = func(item);
-        if (Array.isArray(mapped)) {
-            result.push(...mapped);
-        } else {
-            result.push(mapped);
+    const result = [];
+    for (let i = 0; i < arr.length; i++) {
+        const mapped = func(arr[i], i, arr);
+        for (let j = 0; j < mapped.length; j++) {
+            result.push(mapped[j]);
         }
-        return result;
-    }, []);
+    }
+    return result;
 }
+  
   
 
 /*Instructions
