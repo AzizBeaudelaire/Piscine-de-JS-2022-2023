@@ -1,20 +1,20 @@
-function posValsIndex(arr, index) {
-    if (arr[index] > 0) {
-        return `undefined: ${arr[index]}`;
-    } else {
-        return undefined;
-    }
+function map(arr, func) {
+    return arr.reduce((result, item) => {
+        result.push(func(item));
+        return result;
+    }, []);
 }
   
 function flatMap(arr, func) {
-    const result = [];
-    for (let i = 0; i < arr.length; i++) {
-        const mapped = func(arr[i]);
-        for (let j = 0; j < mapped.length; j++) {
-            result.push(mapped[j]);
+    return arr.reduce((result, item) => {
+        const mapped = func(item);
+        if (Array.isArray(mapped)) {
+            result.push(...mapped);
+        } else {
+            result.push(mapped);
         }
-    }
-    return result;
+        return result;
+    }, []);
 }
   
 
