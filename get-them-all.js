@@ -1,40 +1,57 @@
 export const getArchitects = () => {
-    const architects = Array.from(document.querySelectorAll('a')).filter(
-        node => node.textContent === 'Architect'
-    )
-  
-    const notArchitects = Array.from(
-        document.querySelectorAll(':not(.not-architect)')
-    )
-  
-    return [architects, notArchitects]
+    const architects = [];
+    const other = [];
+    
+    const achiElements = document.getElementsByTagName("a");
+    for (let person of achiElements) {
+        architects.push(person);
+    }
+    
+    const otherElements = document.getElementsByTagName('span');
+    for (let person of otherElements) {
+        other.push(person);
+    }
+    return [architects, other];
 }
-  
+
 export const getClassical = () => {
-    const classicalArchitects = Array.from(document.getElementsByClassName('classical'))
-        .filter(a => a.textContent.includes('Architect'))
-  
-    const nonClassicalArchitects = Array.from(document.getElementsByTagName('a'))
-        .filter(a => !a.classList.contains('classical') || !a.textContent.includes('Architect'))
-  
-    return [classicalArchitects, nonClassicalArchitects]
+    const classical = [];
+    const nonClassical = [];
+    
+    for (let person of document.getElementsByClassName('classical')) {
+        classical.push(person);
+    }
+    
+    for (let person of document.querySelectorAll('a:not(.classical)')) {
+        nonClassical.push(person);
+    }
+    return [classical, nonClassical]
+    
 }
-  
-export const getActive = () => {
-    const classicalArchitects = Array.from(document.getElementsByClassName('classical'))
-        .filter(a => a.textContent.includes('Architect'))
-  
-    const activeArchitects = classicalArchitects.filter(a => !a.classList.contains('inactive'))
-    const nonActiveArchitects = classicalArchitects.filter(a => a.classList.contains('inactive'))
-  
-    return [activeArchitects, nonActiveArchitects]
+    
+    export const getActive = () => {
+    const active = [];
+    const nonActive = [];
+    
+    for (let person of document.getElementsByClassName('classical active')) {
+        active.push(person);
+    }
+    
+    for (let person of document.querySelectorAll('.classical:not(.active)')) {
+        nonActive.push(person);
+    }
+    return [active, nonActive];
 }
-  
+    
 export const getBonannoPisano = () => {
-    const bonannoPisano = document.getElementById('BonannoPisano')
-    const activeClassicalArchitects = Array.from(document.querySelectorAll('.classical:not(.inactive)'))
-        .filter(a => a.id !== 'BonannoPisano')
-  
-    return [bonannoPisano, activeClassicalArchitects]
+    const notPisano = [];
+    const pisano = document.querySelector('#BonannoPisano');
+    
+    for (let person of document.getElementsByClassName('classical active')) {
+        if (person.id !== "BonannoPisano")
+            notPisano.push(person);
+    }
+    
+    
+    return [pisano, notPisano];
 }
-  
