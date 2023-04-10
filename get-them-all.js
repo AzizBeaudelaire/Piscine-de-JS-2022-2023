@@ -1,11 +1,13 @@
 export const getArchitects = () => {
-    const architects = Array.from(document.getElementsByTagName('a'))
-        .filter(a => a.textContent === 'Architect')
+    const architects = Array.from(document.querySelectorAll('a')).filter(
+        node => node.textContent === 'Architect'
+    )
   
-    const nonArchitects = Array.from(document.getElementsByTagName('span'))
-        .filter(span => !span.classList.contains('name') || span.classList.contains('Architect'))
+    const notArchitects = Array.from(
+        document.querySelectorAll(':not(.not-architect)')
+    )
   
-    return [architects, nonArchitects]
+    return [architects, notArchitects]
 }
   
 export const getClassical = () => {
