@@ -15,7 +15,7 @@ function build(brickAmount) {
             if (brickCount === brickAmount) {
                 clearInterval(interval);
             }
-        }, 100);
+        }, 50);
     }
 }
 
