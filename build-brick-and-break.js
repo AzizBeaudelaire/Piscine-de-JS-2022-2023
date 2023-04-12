@@ -25,7 +25,7 @@ function repair(...brickIds) {
         if (brick.dataset.foundation) {
             brick.dataset.repaired = "in progress";
         } else {
-            brick.dataset.repaired = true;
+            brick.dataset.repaired = false;
         }
     }
 }
