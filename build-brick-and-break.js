@@ -1,57 +1,41 @@
-// build function
-function build(amount) {
-    let id = 1
-    const columns = document.querySelectorAll('.column')
-  
-    // create brick div and add to column at regular interval
-    const interval = setInterval(() => {
-        if (id > amount) {
-            clearInterval(interval)
-            return
+let brickCount = 0;
+
+function build(brickAmount) {
+    const middleColumn = document.querySelector("#middle-column");
+    for (let i = 1; i <= brickAmount; i++) {
+        const div = document.createElement("div");
+        div.id = `brick-${i}`;
+        div.classList.add("brick");
+        if (i === Math.floor(brickAmount / 2) + 1) {
+            div.dataset.foundation = true;
         }
-        const brick = document.createElement('div')
-        brick.id = `brick-${id}`
-        brick.classList.add('brick')
-        if (id % 3 === 2) {
-            brick.setAttribute('data-foundation', true)
-        }
-        columns[Math.floor(Math.random() * 3)].appendChild(brick)
-        id++
-    }, 100)
-}
-  
-  // repair function
-function repair(...ids) {
-    ids.forEach(id => {
-        const brick = document.getElementById(id)
-        if (brick.parentNode.classList.contains('middle')) {
-            brick.setAttribute('data-repaired', 'in progress')
-        } else {
-            brick.setAttribute('data-repaired', true)
-        }
-    })
-}
-  
-  // destroy function
-function destroy() {
-    const bricks = document.querySelectorAll('.brick')
-    if (bricks.length > 0) {
-        const lastBrick = bricks[bricks.length - 1]
-        lastBrick.parentNode.removeChild(lastBrick)
+        const interval = setInterval(() => {
+            middleColumn.appendChild(div);
+            brickCount++;
+            if (brickCount === brickAmount) {
+                clearInterval(interval);
+            }
+        }, 100);
     }
 }
-  
-  // click handlers
-document.querySelector('.hammer').addEventListener('click', () => {
-    const ids = document.querySelectorAll('.brick[data-repaired="false"], .brick[data-repaired="in progress"]')
-    repair(...Array.from(ids).map(brick => brick.id))
-})
-  
-document.querySelector('.bomb').addEventListener('click', () => {
-    destroy()
-})
-  
-  // build 10 bricks
-build(10);
-  
-  
+
+function repair(...brickIds) {
+    for (let brickId of brickIds) {
+        const brick = document.querySelector(`#${brickId}`);
+        if (brick.dataset.foundation) {
+            brick.dataset.repaired = "in progress";
+        } else {
+            brick.dataset.repaired = true;
+        }
+    }
+}
+
+function destroy() {
+    const lastBrick = document.querySelector(`#brick-${brickCount}`);
+    if (lastBrick) {
+        lastBrick.parentNode.removeChild(lastBrick);
+        brickCount--;
+    }
+}
+
+build(30);
