@@ -1,41 +1,30 @@
-let brickCount = 0;
-
-function build(brickAmount) {
-    const middleColumn = document.querySelector("#middle-column");
-    for (let i = 1; i <= brickAmount; i++) {
-        const div = document.createElement("div");
-        div.id = `brick-${i}`;
-        div.classList.add("brick");
-        if (i === Math.floor(brickAmount / 2) + 1) {
-            div.dataset.foundation = true;
+function build(n) {
+    let body = document.getElementsByTagName("body")[0];
+    let bricks = 1;
+    let interval = setInterval(() => {
+        let brick = document.createElement("div");
+        brick.setAttribute("id", "brick-" + bricks);
+        bricks % 3 === 2 ? (brick.dataset.foundation = true) : null;
+        body.appendChild(brick);
+        bricks++;
+        if (bricks > n) {
+            clearInterval(interval);
         }
-        const interval = setInterval(() => {
-            middleColumn.appendChild(div);
-            brickCount++;
-            if (brickCount === brickAmount) {
-                clearInterval(interval);
-            }
-        }, 50);
-    }
+    }, 100);
 }
 
-function repair(...brickIds) {
-    for (let brickId of brickIds) {
-        const brick = document.querySelector(`#${brickId}`);
-        if (brick.dataset.foundation) {
-            brick.dataset.repaired = "in progress";
-        } else {
-            brick.dataset.repaired = false;
-        }
-    }
+function repair(...ids) {
+    ids.forEach((id) => {
+        let brick = document.getElementById(id);
+        brick.getAttribute("foundation")
+            ? (brick.dataset.repaired = "in progress")
+            : (brick.dataset.repaired = true);
+    });
 }
 
 function destroy() {
-    const lastBrick = document.querySelector(`#brick-${brickCount}`);
-    if (lastBrick) {
-        lastBrick.parentNode.removeChild(lastBrick);
-        brickCount--;
-    }
+    let bricks = document.getElementsByTagName("div");
+    bricks[bricks.length - 1].remove();
 }
 
-build(30);
+export { build, repair, destroy };
