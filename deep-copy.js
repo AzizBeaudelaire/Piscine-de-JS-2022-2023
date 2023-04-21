@@ -25,3 +25,6 @@ function isDefenitelyAnObject(input) {
         !(input instanceof RegExp)
     );
 }
+
+/*Instructions
+Create a function named deepCopy that copies objects and arrays recursively.*/
